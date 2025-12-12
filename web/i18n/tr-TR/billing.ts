@@ -8,7 +8,6 @@ const translation = {
   viewBilling: 'Faturalandırma ve abonelikleri yönet',
   buyPermissionDeniedTip: 'Abone olmak için lütfen işletme yöneticinize başvurun',
   plansCommon: {
-    title: 'Size uygun bir plan seçin',
     yearlyTip: 'Yıllık abonelikle 2 ay ücretsiz!',
     mostPopular: 'En Popüler',
     planRange: {
@@ -31,6 +30,7 @@ const translation = {
     vectorSpace: 'Vektör Alanı',
     vectorSpaceTooltip: 'Vektör Alanı, LLM\'lerin verilerinizi anlaması için gerekli uzun süreli hafıza sistemidir.',
     documentProcessingPriority: 'Doküman İşleme Önceliği',
+    documentProcessingPriorityTip: 'Daha yüksek belge işleme önceliği için lütfen planınızı yükseltin.',
     documentProcessingPriorityUpgrade: 'Daha fazla veriyi daha yüksek doğrulukla ve daha hızlı işleyin.',
     priority: {
       'standard': 'Standart',
@@ -78,7 +78,7 @@ const translation = {
     freeTrialTipPrefix: 'Kaydolun ve bir',
     priceTip: 'iş alanı başına/',
     documentsRequestQuota: '{{count,number}}/dakika Bilgi İsteği Oran Limiti',
-    apiRateLimitUnit: '{{count,number}}/gün',
+    apiRateLimitUnit: '{{count,number}}',
     documents: '{{count,number}} Bilgi Belgesi',
     comparePlanAndFeatures: 'Planları ve özellikleri karşılaştır',
     self: 'Kendi Barındırılan',
@@ -93,6 +93,29 @@ const translation = {
     freeTrialTip: '200 OpenAI çağrısının ücretsiz denemesi.',
     teamWorkspace: '{{count,number}} Takım Çalışma Alanı',
     documentsRequestQuotaTooltip: 'Bir çalışma alanının bilgi tabanında, veri seti oluşturma, silme, güncellemeler, belge yüklemeleri, değişiklikler, arşivleme ve bilgi tabanı sorguları dahil olmak üzere, dakikada gerçekleştirebileceği toplam işlem sayısını belirtir. Bu ölçüt, bilgi tabanı taleplerinin performansını değerlendirmek için kullanılır. Örneğin, bir Sandbox kullanıcısı bir dakika içinde ardışık 10 vurma testi gerçekleştirirse, çalışma alanı bir sonraki dakika için aşağıdaki işlemleri gerçekleştirmesi geçici olarak kısıtlanacaktır: veri seti oluşturma, silme, güncellemeler ve belge yüklemeleri veya değişiklikler.',
+    startBuilding: 'İnşa Etmeye Başlayın',
+    taxTip: 'Tüm abonelik fiyatları (aylık/yıllık) geçerli vergiler (ör. KDV, satış vergisi) hariçtir.',
+    taxTipSecond: 'Bölgenizde geçerli vergi gereksinimleri yoksa, ödeme sayfanızda herhangi bir vergi görünmeyecek ve tüm abonelik süresi boyunca ek bir ücret tahsil edilmeyecektir.',
+    triggerEvents: {
+      unlimited: 'Sınırsız Tetikleme Olayları',
+      tooltip: 'Eklenti, Zamanlama veya Webhook tetikleyicileri aracılığıyla iş akışlarını otomatik olarak başlatan etkinliklerin sayısı.',
+      sandbox: '{{count,number}} Tetikleyici Olaylar',
+      professional: '{{count,number}} Tetikleme Etkinlikleri/ay',
+    },
+    workflowExecution: {
+      faster: 'Daha Hızlı İş Akışı Yürütme',
+      tooltip: 'İş akışı yürütme kuyruğu önceliği ve hızı.',
+      priority: 'Öncelikli İş Akışı Yürütme',
+      standard: 'Standart İş Akışı Yürütme',
+    },
+    startNodes: {
+      unlimited: 'Sınırsız Tetikleyiciler/iş akışı',
+      limited: 'Maksimum {{count}} Tetikleyici/iş akışı',
+    },
+    title: {
+      plans: 'planlar',
+      description: 'Ekibinizin ihtiyaçlarına en uygun planı seçin.',
+    },
   },
   plans: {
     sandbox: {
@@ -114,16 +137,14 @@ const translation = {
       name: 'Kurumsal',
       description: 'Büyük ölçekli kritik sistemler için tam yetenekler ve destek.',
       includesTitle: 'Takım plandaki her şey, artı:',
-      features: {
-      },
+      features: ['Kurumsal Düzeyde Ölçeklenebilir Dağıtım Çözümleri', 'Ticari Lisans Yetkilendirmesi', 'Özel Kurumsal Özellikler', 'Birden Fazla Çalışma Alanı ve Kurumsal Yönetim', 'SSO', 'Dify Ortakları tarafından Müzakere Edilen SLA\'lar', 'Gelişmiş Güvenlik ve Kontroller', 'Dify Resmi Tarafından Güncellemeler ve Bakım', 'Profesyonel Teknik Destek'],
       priceTip: 'Yıllık Faturalama Sadece',
       for: 'Büyük boyutlu Takımlar için',
       btnText: 'Satış ile İletişime Geç',
       price: 'Özel',
     },
     community: {
-      features: {
-      },
+      features: ['Tüm Temel Özellikler Açık Depoda Yayınlandı', 'Tek Çalışma Alanı', 'Dify Açık Kaynak Lisansına uygundur'],
       price: 'Ücretsiz',
       includesTitle: 'Ücretsiz Özellikler:',
       name: 'Topluluk',
@@ -132,8 +153,7 @@ const translation = {
       description: 'Bireysel Kullanıcılar, Küçük Ekipler veya Ticari Olmayan Projeler İçin',
     },
     premium: {
-      features: {
-      },
+      features: ['Çeşitli Bulut Sağlayıcıları Tarafından Kendi Kendine Yönetilen Güvenilirlik', 'Tek Çalışma Alanı', 'Web Uygulama Logo ve Marka Özelleştirme', 'Öncelikli E-posta ve Sohbet Desteği'],
       name: 'Premium',
       includesTitle: 'Topluluktan her şey, artı:',
       for: 'Orta Büyüklükteki Organizasyonlar ve Ekipler için',
@@ -167,8 +187,35 @@ const translation = {
     buildApps: 'Uygulama Geliştir',
     annotationQuota: 'Notlandırma Kotası',
     documentsUploadQuota: 'Belgeler Yükleme Kotası',
+    triggerEvents: 'Tetikleyici Olaylar',
+    perMonth: 'ayda',
+    resetsIn: '{{count,number}} gün içinde sıfırlanır',
   },
   teamMembers: 'Ekip Üyeleri',
+  triggerLimitModal: {
+    upgrade: 'Güncelle',
+    title: 'Daha fazla tetikleyici olayı açmak için yükseltin',
+    dismiss: 'Kapat',
+    description: 'Bu plan için iş akışı etkinliği tetikleyici sınırına ulaştınız.',
+    usageTitle: 'TETİKLEYİCİ OLAYLAR',
+  },
+  viewBillingTitle: 'Faturalama ve Abonelikler',
+  viewBillingDescription: 'Ödeme yöntemlerini, faturaları ve abonelik değişikliklerini yönetin',
+  viewBillingAction: 'Yönet',
+  upgrade: {
+    uploadMultiplePages: {
+      title: 'Aynı anda birden fazla belge yüklemek için yükseltin',
+      description: 'Yükleme sınırına ulaştınız — mevcut planınızda aynı anda yalnızca bir belge seçip yükleyebilirsiniz.',
+    },
+    uploadMultipleFiles: {
+      title: 'Toplu belge yüklemeyi açmak için yükseltin',
+      description: 'Zaman kazanmak ve verimliliği artırmak için bir kerede daha fazla belgeyi toplu olarak yükleyin.',
+    },
+    addChunks: {
+      title: 'Parçalar eklemeye devam etmek için yükseltin',
+      description: 'Bu plan için parça ekleme sınırına ulaştınız.',
+    },
+  },
 }
 
 export default translation

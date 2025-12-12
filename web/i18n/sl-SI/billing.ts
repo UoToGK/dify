@@ -8,7 +8,6 @@ const translation = {
   viewBilling: 'Upravljanje s plačili in naročninami',
   buyPermissionDeniedTip: 'Za naročnino kontaktirajte svojega skrbnika podjetja',
   plansCommon: {
-    title: 'Izberite načrt, ki vam ustreza',
     yearlyTip: 'Z letno naročnino pridobite 2 meseca brezplačno!',
     mostPopular: 'Najbolj priljubljeno',
     planRange: {
@@ -31,6 +30,7 @@ const translation = {
     vectorSpace: 'Prostor za vektorje',
     vectorSpaceTooltip: 'Prostor za vektorje je dolgoročni pomnilniški sistem, potreben za to, da LLM-ji razumejo vaše podatke.',
     documentProcessingPriority: 'Prioriteta obdelave dokumentov',
+    documentProcessingPriorityTip: 'Za višjo prednost obdelave dokumentov nadgradite svoj načrt.',
     documentProcessingPriorityUpgrade: 'Obdelujte več podatkov z večjo natančnostjo in hitrostjo.',
     priority: {
       'standard': 'Standard',
@@ -86,13 +86,36 @@ const translation = {
     teamMember_one: '{{count,number}} član ekipe',
     teamMember_other: '{{count,number}} Članov ekipe',
     documentsRequestQuota: '{{count,number}}/min Omejitev stopnje zahtev po znanju',
-    apiRateLimitUnit: '{{count,number}}/dan',
+    apiRateLimitUnit: '{{count,number}}',
     priceTip: 'na delovnem prostoru/',
     freeTrialTipPrefix: 'Prijavite se in prejmite',
     cloud: 'Oblačna storitev',
     freeTrialTip: 'brezplačno preizkušnjo 200 klicev OpenAI.',
     getStarted: 'Začnite',
     documentsRequestQuotaTooltip: 'Določa skupno število dejanj, ki jih lahko delovno mesto opravi na minuto znotraj znanja baze, vključno s kreiranjem, brisanjem, posodobitvami, nalaganjem dokumentov, spremembami, arhiviranjem in poizvedbami po znanju bazi. Ta meritev se uporablja za ocenjevanje uspešnosti poizvedb v bazi znanja. Na primer, če uporabnik Sandbox izvede 10 zaporednih testov udarca v eni minuti, bo njegovo delovno mesto začasno omejeno pri izvajanju naslednjih dejanj v naslednji minuti: kreiranje podatkovnih nizov, brisanje, posodobitve in nalaganje ali spremembe dokumentov.',
+    startBuilding: 'Začnite graditi',
+    taxTip: 'Vse cene naročnin (mesečne/letne) ne vključujejo veljavnih davkov (npr. DDV, davek na promet).',
+    taxTipSecond: 'Če vaša regija nima veljavnih davčnih zahtev, se v vaši košarici ne bo prikazal noben davek in za celotno obdobje naročnine vam ne bodo zaračunani nobeni dodatni stroški.',
+    triggerEvents: {
+      unlimited: 'Neomejeni sprožilni dogodki',
+      tooltip: 'Število dogodkov, ki samodejno sprožijo delovne tokove prek vtičnika, urnika ali sprožilcev spletnih klicev.',
+      sandbox: '{{count,number}} Sprožilni dogodki',
+      professional: '{{count,number}} Sprožilni dogodki/mesec',
+    },
+    workflowExecution: {
+      standard: 'Izvajanje standardnega delovnega procesa',
+      priority: 'Izvajanje prednostnega poteka dela',
+      tooltip: 'Prednostna vrstni red in hitrost izvajanja delovnega toka.',
+      faster: 'Hitrejše izvajanje delovnega procesa',
+    },
+    startNodes: {
+      unlimited: 'Neomejeni sprožilci/poteki dela',
+      limited: 'Do {{count}} sprožilcev/poteka dela',
+    },
+    title: {
+      plans: 'plani',
+      description: 'Izberite načrt, ki najbolj ustreza potrebam vaše ekipe.',
+    },
   },
   plans: {
     sandbox: {
@@ -114,16 +137,14 @@ const translation = {
       name: 'Podjetje',
       description: 'Pridobite vse zmogljivosti in podporo za velike sisteme kritične za misijo.',
       includesTitle: 'Vse v načrtu Ekipa, plus:',
-      features: {
-      },
+      features: ['Razširljive rešitve za uvajanje na ravni podjetja', 'Pooblastilo za komercialno licenco', 'Ekskluzivne funkcije za podjetja', 'Več delovnih prostorov in upravljanje podjetja', 'SSO', 'Pogajani SLA-ji s strani partnerjev Dify', 'Napredna varnost in nadzor', 'Posodobitve in vzdrževanje s strani Dify uradno', 'Strokovna tehnična podpora'],
       priceTip: 'Letno zaračunavanje samo',
       price: 'Po meri',
       btnText: 'Kontaktirajte prodajo',
       for: 'Za velike ekipe',
     },
     community: {
-      features: {
-      },
+      features: ['Vse osnovne funkcije so izdane v javni repozitorij', 'Enotno delovno okolje', 'V skladu z Dify licenco odprte kode'],
       includesTitle: 'Brezplačne funkcije:',
       price: 'Brezplačno',
       name: 'Skupnost',
@@ -132,8 +153,7 @@ const translation = {
       btnText: 'Začnite s skupnostjo',
     },
     premium: {
-      features: {
-      },
+      features: ['Samo-upravljana zanesljivost različnih ponudnikov oblaka', 'Enotno delovno okolje', 'Prilagoditev logotipa in blagovne znamke spletne aplikacije', 'Prioritetna e-pošta in klepet v živo'],
       name: 'Premium',
       priceTip: 'Na podlagi oblaka Marketplace',
       price: 'Škalable',
@@ -167,8 +187,35 @@ const translation = {
     annotationQuota: 'Quota za anotacijo',
     teamMembers: 'Člani ekipe',
     buildApps: 'Gradite aplikacije',
+    perMonth: 'na mesec',
+    triggerEvents: 'Sprožilni dogodki',
+    resetsIn: 'Ponastavitve čez {{count,number}} dni',
   },
   teamMembers: 'Člani ekipe',
+  triggerLimitModal: {
+    dismiss: 'Zavrni',
+    usageTitle: 'SPROŽITVENI DOGODKI',
+    description: 'Dosegli ste omejitev sprožilcev dogodkov delovnega toka za ta načrt.',
+    title: 'Nadgradite za odklep več sprožilnih dogodkov',
+    upgrade: 'Nadgradnja',
+  },
+  viewBillingTitle: 'Fakturiranje in naročnine',
+  viewBillingDescription: 'Upravljajte načine plačila, račune in spremembe naročnin',
+  viewBillingAction: 'Upravljaj',
+  upgrade: {
+    uploadMultiplePages: {
+      title: 'Nadgradite za nalaganje več dokumentov hkrati',
+      description: 'Dosegli ste omejitev nalaganja — na vašem trenutnem načrtu je mogoče izbrati in naložiti le en dokument naenkrat.',
+    },
+    uploadMultipleFiles: {
+      title: 'Nadgradite za odklep nalaganja dokumentov v skupkih',
+      description: 'Naložite več dokumentov hkrati, da prihranite čas in izboljšate učinkovitost.',
+    },
+    addChunks: {
+      title: 'Nadgradite, da nadaljujete z dodajanjem delov',
+      description: 'Dosegli ste omejitev dodajanja delov za ta načrt.',
+    },
+  },
 }
 
 export default translation

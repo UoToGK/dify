@@ -81,6 +81,10 @@ const translation = {
     },
     addUrl: 'URL hinzufügen',
     learnMore: 'Weitere Informationen',
+    sort: {
+      uploadTime: 'Upload-Zeit',
+      hitCount: 'Abrufanzahl',
+    },
   },
   metadata: {
     title: 'Metadaten',
@@ -99,6 +103,9 @@ const translation = {
       upload_file: 'Datei hochladen',
       notion: 'Von Notion synchronisieren',
       github: 'Von Github synchronisieren',
+      online_document: 'Online-Dokument',
+      local_file: 'Lokale Datei',
+      website_crawl: 'Website-Crawl',
     },
     type: {
       book: 'Buch',
@@ -336,6 +343,7 @@ const translation = {
     childMaxTokens: 'Kind',
     hierarchical: 'Eltern-Kind',
     pause: 'Pause',
+    waiting: 'Einbettung wartet...',
   },
   segment: {
     paragraphs: 'Absätze',
@@ -393,6 +401,7 @@ const translation = {
     searchResults_one: 'ERGEBNIS',
     keywordEmpty: 'Das Schlüsselwort darf nicht leer sein.',
     keywordDuplicate: 'Das Schlüsselwort existiert bereits',
+    allFilesUploaded: 'Alle Dateien müssen vor dem Speichern hochgeladen werden',
   },
 }
 
